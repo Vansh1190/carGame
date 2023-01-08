@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Car on road</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+
+		}
+
+		body {
+			height: 1000px;
+		}
+
+		.road {
+			background-color: black;
+			width: 100%;
+			height: 350px;
+			overflow: hidden;
+		}
+
+		.car img {
+			width: 250px;
+			animation: car 1s infinite;
+			animation-direction: alternate-reverse;
+		}
+
+		.car {
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			bottom: 0;
+			top: 34px;
+			/* background-color: red; */
+			z-index: 5;
+			/* margin-top: 350px; */
+			/* background-image:im); */
+		}
+
+		.line {
+			/* top: 150px; */
+			position: relative;
+			width: 200px;
+			left: -385px;
+			height: 20px;
+			background-color: rgb(165, 42, 42);
+			animation: anim 1s infinite;
+			animation-timing-function: linear;
+		}
+
+		.allLines {
+			top: 150px;
+			gap: 154px;
+			display: inline-flex;
+			left: 15px;
+			position: relative;
+			/* overflow: hidden; */
+		}
+
+		.obs {
+			width: 50px;
+			height: 100px;
+			background-color: #e6a705;
+			position: absolute;
+			top: 0;
+			right: 0;
+
+		}
+
+		@keyframes anim {
+			100% {
+				left: -385px;
+			}
+
+			50% {}
+
+			0% {
+				left: -30px;
+
+			}
+
+		}
+
+		@keyframes car {
+			0% {
+				/* transform: scale(1); */
+				/* transform: scale(1); */
+				transform: translateY(1px);
+
+			}
+
+			100% {
+
+				transform: translateY(-1px);
+				transform: rotate(-2deg);
+				/* transform: scale(1.02); */
+
+				/* top: 150px; */
+			}
+		}
+
+		button {
+			width: 250px;
+			height: 100px;
+		}
+
+		@media (max-width: 750px) {
+			.obs {
+				width: 25px;
+				height: 50px;
+			}
+
+			.car img {
+				width: 170px;
+			}
+		}
+
+		@media (max-width: 400px) {
+			.obs {
+				width: 25px;
+				height: 65px;
+			}
+
+			.car img {
+				width: 120px;
+			}
+
+			button {
+				width: 150px;
+				height: 100px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="road">
+			<div class="allLines">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+			<div class="car" id="car">
+				<img src="carimg.png" alt="">
+			</div>
+			<div class="obs" id="obs">
+			</div>
+		</div>
+
+		<div class="controls">
+			<button id="up">up</button>
+			<button id="down">down</button>
+			<button id="forward">Forward</button>
+			<!-- <button id="left" onclick="left()">left</button> -->
+			<!-- <button id="right" onclick="up()">right</button> -->
+		</div>
+	</div>
+
+	<div class="add">
+		<div class="ad">
+			<script type="text/javascript">
+				atOptions = {
+					'key': '1e364785ec6a50684b2d5127ab6ee3ab',
+					'format': 'iframe',
+					'height': 250,
+					'width': 300,
+					'params': {}
+				};
+				document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivecreativeformat.com/1e364785ec6a50684b2d5127ab6ee3ab/invoke.js"></scr' + 'ipt>');
+			</script>
+
+			<script type="text/javascript">
+				atOptions = {
+					'key': 'ffb8e94fc5475c6e74eba7173d3050f8',
+					'format': 'iframe',
+					'height': 50,
+					'width': 320,
+					'params': {}
+				};
+				document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivecreativeformat.com/ffb8e94fc5475c6e74eba7173d3050f8/invoke.js"></scr' + 'ipt>');
+			</script>
+			<script async="async" data-cfasync="false"
+				src="//pl18163981.highcpmrevenuenetwork.com/d62328702126be50473c87f33e84979c/invoke.js"></script>
+			<div id="container-d62328702126be50473c87f33e84979c"></div>
+		</div>
+	</div>
+
+	<script>
+		let aud = new Audio("bgMusic.mp3")
+		aud.play();
+
+		
+		let n = 34;
+		let v = 134;
+		// setInterval(()=>{
+
+		//     console.log(v)
+		//     if(n==500){
+		//         n=0;
+		//     }
+		//     n++;
+		//     let c = (n+"px")
+		//     console.log(c)
+		// document.getElementById("car").style.left = (n+"px")
+		//     // document.getElementById("car").style.top = (v+"px")
+		// },1000)
+
+
+
+
+
+		// Obstacle
+		let score = 0;
+		let ox;
+		let oy;
+		ox = 34;
+		oy = 1000;
+		nextObjs = oy
+		otime = 5
+		const mediaQuery = window.matchMedia('(max-width: 768px)')
+
+		if (mediaQuery.matches) {
+			otime = 15
+			oy = 350
+			nextObjs = oy
+		}
+
+
+		let c = setInterval(() => {
+			if (oy == 8) {
+				let audio = new Audio("game_boy.mp3")
+				audio.play();
+				score++;
+				ox = Math.floor(Math.random() * 250);
+				document.getElementById("obs").style.top = (ox + "px");
+				console.log(ox)
+				oy = nextObjs
+
+			}
+			document.getElementById("obs").style.left = (oy + "px");
+			document.getElementById("car").style.left = (n + "px")
+			document.getElementById("car").style.top = (v + "px")
+			document.getElementById("obs").style.top = (ox + "px");
+			n;
+			oy -= 1
+			// console.log(oy)
+			// console.log(n)
+			if (v >= 250) {
+
+				v = 250;
+			}
+			const mediaQuery = window.matchMedia('(max-width: 768px)')
+
+			if (mediaQuery.matches) {
+				if (n >= (oy - 90) && n < (oy + 25) && (v > (ox - 65)) && v < (ox + 65)) {
+					
+					let audioEnd = new Audio("endMusic.mp3");
+					audioEnd.play();
+					
+					clearInterval(c);
+					alert("Game Over \n Your score is " + score)
+					alert("Refresh the page.")
+
+				}
+				else {
+					console.log()
+				}
+			}
+			else {
+
+				if (n >= (oy - 250) && n < (oy + 50) && (v > (ox - 100)) && v < (ox + 100)) {
+
+					clearInterval(c);
+					alert("Game Over \n Your score is " + score)
+					alert("Refresh the page.")
+
+				}
+				else {
+					console.log()
+				}
+			}
+		}, otime)
+
+		let upA = false;
+		let downA = false;
+
+		function up() {
+			upA = true;
+			if (downA) {
+				clearInterval(c2)
+				downA = false;
+			}
+
+			c1 = setInterval(() => {
+				v = v - 1
+			}, 30)
+
+		}
+		function down() {
+			downA = true;
+			if (upA) {
+				clearInterval(c1)
+				upA = false;
+			}
+			c2 = setInterval(() => {
+				v = v + 1
+				document.getElementById("car").style
+			}, 30)
+		}
+		function forward() {
+			if (upA) {
+				clearInterval(c1)
+			}
+			if (downA) {
+				clearInterval(c2)
+			}
+		}
+
+
+
+		document.getElementById("up").addEventListener("click", up)
+		// document.getElementById("up").addEventListener("mouseleave  ",clr)
+		document.getElementById("down").addEventListener("click", down)
+		document.getElementById("forward").addEventListener("click", forward)
+        // document.getElementById("down").addEventListener("mouseleave",clr)
+
+
+
+
+
+
+
+	</script>
+</body>
+
+</html>
