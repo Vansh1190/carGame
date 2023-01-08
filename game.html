@@ -31,6 +31,7 @@
 		}
 
 		.car {
+			
 			width: 50px;
 			height: 50px;
 			position: absolute;
@@ -242,7 +243,7 @@
 				score++;
 				ox = Math.floor(Math.random() * 250);
 				document.getElementById("obs").style.top = (ox + "px");
-				console.log(ox)
+				
 				oy = nextObjs
 
 			}
@@ -264,29 +265,31 @@
 				if (n >= (oy - 90) && n < (oy + 25) && (v > (ox - 65)) && v < (ox + 65)) {
 					
 					let audioEnd = new Audio("endMusic.mp3");
-					audioEnd.play();
-					
 					clearInterval(c);
-					alert("Game Over \n Your score is " + score)
-					alert("Refresh the page.")
+					audioEnd.play();
+					setTimeout(()=>{
 
-				}
-				else {
-					console.log()
+						alert("Game Over \n Your score is " + score)
+						alert("Refresh the page.")
+					},2000)
+
 				}
 			}
 			else {
 
-				if (n >= (oy - 250) && n < (oy + 50) && (v > (ox - 100)) && v < (ox + 100)) {
+				if (n >= (oy - 240) && n < (oy + 45) && (v > (ox - 90)) && v < (ox + 90)) {
 
+					let audioEnd = new Audio("endMusic.mp3");
+					audioEnd.play();
 					clearInterval(c);
-					alert("Game Over \n Your score is " + score)
-					alert("Refresh the page.")
+					setTimeout(()=>{
+						alert("Game Over \n Your score is " + score)
+						alert("Refresh the page.")
+
+					},2000)
 
 				}
-				else {
-					console.log()
-				}
+			
 			}
 		}, otime)
 
@@ -294,6 +297,7 @@
 		let downA = false;
 
 		function up() {
+			document.getElementById("car").style.transform = "rotate(-3deg)"
 			upA = true;
 			if (downA) {
 				clearInterval(c2)
@@ -307,16 +311,17 @@
 		}
 		function down() {
 			downA = true;
+			document.getElementById("car").style.transform = "rotate(3deg)"
 			if (upA) {
 				clearInterval(c1)
 				upA = false;
 			}
 			c2 = setInterval(() => {
 				v = v + 1
-				document.getElementById("car").style
 			}, 30)
 		}
 		function forward() {
+			document.getElementById("car").style.transform = "rotate(0deg)"
 			if (upA) {
 				clearInterval(c1)
 			}
